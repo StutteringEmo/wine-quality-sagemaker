@@ -1,8 +1,29 @@
 # Wine Quality Prediction – AWS SageMaker
 
-This project implements linear regression to predict wine quality (score 0–10) using the [UCI Wine Quality Dataset](https://archive.ics.uci.edu/ml/datasets/wine+quality).
+This repository contains the implementation of **Problem 2** of the assignment:  
+> Build, train, and deploy a Linear Regression model to predict wine quality on AWS SageMaker, both **with container technology** and **without container technology**.
 
-It was completed as part of **ANA680 – Applied Optimization (Problem 2)**, demonstrating ML deployment with and without container technology.
+The model predicts wine quality (a score between 0–10) using 11 features from the [UCI Wine Quality dataset](https://archive.ics.uci.edu/ml/datasets/wine+quality):
+
+- Fixed acidity  
+- Volatile acidity  
+- Citric acid  
+- Residual sugar  
+- Chlorides  
+- Free sulfur dioxide  
+- Total sulfur dioxide  
+- Density  
+- pH  
+- Sulphates  
+- Alcohol  
+
+---
+
+## Tech Stack
+- **Language**: Python 3  
+- **Libraries**: Scikit-learn, Pandas, Numpy, Joblib  
+- **Environment**: JupyterLab on AWS SageMaker Studio  
+- **Container**: AWS SageMaker SKLearn container  
 
 ---
 
@@ -22,40 +43,39 @@ It was completed as part of **ANA680 – Applied Optimization (Problem 2)**, dem
 │ ├── winequality-white.csv
 │ ├── winequality_combined.csv
 
+---
+
+## No Container Approach
+- Implemented in `WineQuality_NoContainer.ipynb` using the built-in **SageMaker SKLearn Estimator**.  
+- Model is trained and evaluated directly in the notebook.  
+- Trained model artifact is saved as `wine_quality_lr_no_container.pkl`.  
+- This method is quick to set up but has limited flexibility for customization.  
 
 ---
 
-## Problem 1: Heroku Deployment (with container)
-- Built a Docker container with Linear Regression model
-- Deployed to Heroku
-- Submission includes **GitHub repo** and **Heroku URL**
-
----
-
-##  Problem 2a: SageMaker without Container
-- Trained Linear Regression using `SKLearn` inside SageMaker
-- Saved model artifact (`wine_quality_lr_no_container.pkl`)
-- No container tech used here
-
----
-
-## Problem 2b: SageMaker with Container
-- Created `train.py` and `inference.py`
-- Used SageMaker SKLearn container
-- Deployed model as a real-time endpoint
-- Successfully tested predictions (CloudWatch logs checked)
+## Container Approach
+- Implemented in `WineQuality_Container.ipynb`.  
+- Uses custom scripts:  
+  - `train.py` for training  
+  - `inference.py` for deployment logic  
+- Built on the AWS SageMaker **SKLearn container**.  
+- Model is deployed as a real-time endpoint on SageMaker.  
+- A smoke test was run to confirm predictions from the live endpoint.  
+- This method provides full control and scalability for real-world deployment.  
 
 ---
 
 ## Results & Conclusion
-- Both methods (with and without container) successfully trained Linear Regression models.
-- The containerized approach required additional custom scripts (`train.py` + `inference.py`) but allowed flexible deployment as an endpoint.
-- The no-container approach was simpler but less customizable.
+- Both approaches successfully trained a Linear Regression model to predict wine quality.  
+- **No Container**: simpler and faster, good for quick experiments.  
+- **Container**: more setup required, but offers greater flexibility and production readiness.  
+- Example endpoint prediction: **4.9976** (wine quality score).  
 
 ---
 
-## How to Reproduce
-1. Upload dataset from `data/`
-2. Run `WineQuality_NoContainer.ipynb` to train without container
-3. Run `WineQuality_Container.ipynb` to train/deploy with container
-4. Check CloudWatch logs if deployment fails
+## How to Run
+1. Upload the dataset files from `/data` into SageMaker Studio.  
+2. Run `WineQuality_NoContainer.ipynb` for the no-container version.  
+3. Run `WineQuality_Container.ipynb` for the containerized version.  
+   - Ensure `train.py` and `inference.py` are in the same directory.  
+4. Confirm the deployed endpoint by running the smoke test provided in the notebook.  
