@@ -29,19 +29,19 @@ The model predicts wine quality (a score between 0–10) using 11 features from 
 
 ## Repository Structure
 
-├── container/ # SageMaker with container technology
-│ ├── WineQuality_Container.ipynb
-│ ├── train.py
-│ ├── inference.py
-│
-├── no_container/ # SageMaker without container technology
-│ ├── WineQuality_NoContainer.ipynb
-│ ├── wine_quality_lr_no_container.pkl
-│
-├── data/ # Training data
-│ ├── winequality-red.csv
-│ ├── winequality-white.csv
-│ ├── winequality_combined.csv
+- **container/** – SageMaker with container technology  
+  - `WineQuality_Container.ipynb`  
+  - `train.py`  
+  - `inference.py`  
+
+- **no_container/** – SageMaker without container technology  
+  - `WineQuality_NoContainer.ipynb`  
+  - `wine_quality_lr_no_container.pkl`  
+
+- **data/** – Training data  
+  - `winequality-red.csv`  
+  - `winequality-white.csv`  
+  - `winequality_combined.csv`  
 
 ---
 
