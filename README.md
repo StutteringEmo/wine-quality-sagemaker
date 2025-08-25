@@ -1,9 +1,16 @@
 # Wine Quality Prediction – AWS SageMaker
 
-This repository contains the implementation of **Problem 2** of the assignment:  
-> Build, train, and deploy a Linear Regression model to predict wine quality on AWS SageMaker, both **with container technology** and **without container technology**.
+This project predicts wine quality (a score between 0–10) using 11 features from the [UCI Wine Quality dataset](https://archive.ics.uci.edu/ml/datasets/wine+quality):
+The objective was to explore two workflows in **AWS SageMaker**:
 
-The model predicts wine quality (a score between 0–10) using 11 features from the [UCI Wine Quality dataset](https://archive.ics.uci.edu/ml/datasets/wine+quality):
+- **No Container**: Using SageMaker’s built-in SKLearn Estimator.
+- **Container**: Using custom training (`train.py`) and inference (`inference.py`) scripts with the SKLearn container.
+
+Both approaches train a **Linear Regression** model on the combined red and white wine datasets.
+
+---
+
+## Features Within Datasets
 
 - Fixed acidity  
 - Volatile acidity  
