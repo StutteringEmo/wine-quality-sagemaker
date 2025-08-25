@@ -1,9 +1,6 @@
 # Wine Quality Prediction – AWS SageMaker
 
 This project predicts wine quality (a score between 0–10) using 11 features from the [UCI Wine Quality dataset](https://archive.ics.uci.edu/ml/datasets/wine+quality):
-
-## Features Within Datasets
-
 - Fixed acidity  
 - Volatile acidity  
 - Citric acid  
