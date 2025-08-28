@@ -76,6 +76,43 @@ Both approaches train a **Linear Regression** model on the combined red and whit
 
 ---
 
+## How to Run (Docker)
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/StutteringEmo/wine-quality-sagemaker.git
+   cd wine-quality-sagemaker
+   ```
+   
+2. Build the container locally (optional, since image is also on GHCR):
+   ```bash
+   docker build -t wine-quality-sagemaker ./container
+   ```
+
+3. Or pull the prebuilt image from GHCR:
+   ```bash
+   docker pull ghcr.io/stutteringemo/wine-quality-sagemaker:latest
+   ```
+
+4. Run the container:
+   ```bash
+   docker run --rm -p 8000:8000 ghcr.io/stutteringemo/wine-quality-sagemaker:latest
+   ```
+
+5. Open the Swagger docs to test the API:
+   - Navigate to: http://localhost:8000/docs
+
+<img width="914" height="569" alt="image" src="https://github.com/user-attachments/assets/6df2388a-da28-4e69-a5b8-d672966b399a" />
+
+<img width="865" height="476" alt="image" src="https://github.com/user-attachments/assets/14f30443-e799-4792-8272-bf31811da6be" />
+
+6. Try the `/predict` endpoint by providing JSON input like:
+<img width="878" height="617" alt="image" src="https://github.com/user-attachments/assets/cd7f744a-74ed-4b15-8e08-6befc9372b33" />
+
+Example Response:
+<img width="855" height="620" alt="image" src="https://github.com/user-attachments/assets/eb8f9e66-9f0a-42b3-b8e3-901fb05924bb" />
+
+
 ## How to Run
 1. Upload the dataset files from `/data` into SageMaker Studio.  
 2. Run `WineQuality_NoContainer.ipynb` for the no-container version.  
