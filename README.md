@@ -16,7 +16,7 @@ This project predicts wine quality (a score between 0–10) using 11 features fr
 The objective was to explore two workflows in **AWS SageMaker**:
 
 - **No Container**: Using SageMaker’s built-in SKLearn Estimator.
-- **Container**: Using custom training (`train.py`) and inference (`inference.py`) scripts with the SKLearn container.
+- **Container**: Training & inference scripts with SageMaker SKLearn container.
 
 Both approaches train a **Linear Regression** model on the combined red and white wine datasets.
 
@@ -68,11 +68,12 @@ Both approaches train a **Linear Regression** model on the combined red and whit
 
 ---
 
-## Results & Conclusion
-- Both approaches successfully trained a Linear Regression model to predict wine quality.  
-- **No Container**: simpler and faster, good for quick experiments.  
-- **Container**: more setup required, but offers greater flexibility and production readiness.  
-- Example endpoint prediction: **4.9976** (wine quality score).  
+## How to Run
+1. Upload the dataset files from `/data` into SageMaker Studio.  
+2. Run `WineQuality_NoContainer.ipynb` for the no-container version.  
+3. Run `WineQuality_Container.ipynb` for the containerized version.  
+   - Ensure `train.py` and `inference.py` are in the same directory.  
+4. Confirm the deployed endpoint by running the smoke test provided in the notebook.
 
 ---
 
@@ -112,10 +113,10 @@ Both approaches train a **Linear Regression** model on the combined red and whit
 Example Response:
 <img width="855" height="620" alt="image" src="https://github.com/user-attachments/assets/eb8f9e66-9f0a-42b3-b8e3-901fb05924bb" />
 
+---
 
-## How to Run
-1. Upload the dataset files from `/data` into SageMaker Studio.  
-2. Run `WineQuality_NoContainer.ipynb` for the no-container version.  
-3. Run `WineQuality_Container.ipynb` for the containerized version.  
-   - Ensure `train.py` and `inference.py` are in the same directory.  
-4. Confirm the deployed endpoint by running the smoke test provided in the notebook.  
+## Results & Conclusion
+- Both approaches successfully trained a Linear Regression model to predict wine quality.  
+- **No Container**: simpler and faster, good for quick experiments.  
+- **Container**: more setup required, but offers greater flexibility and production readiness.  
+- Example endpoint prediction: **4.9976** (wine quality score).  
